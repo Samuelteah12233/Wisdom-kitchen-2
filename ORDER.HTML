@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order - Wisdom’s Kitchen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Wisdom’s Kitchen</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="order.html">Order</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<div class="order-container fade-in">
+
+  <!-- LEFT SIDE: FOOD + DRINKS -->
+  <div class="order-left">
+
+    <h2>🍽 Food</h2>
+    <div class="order-grid">
+
+      <div class="order-card" onclick="addItem('Meat Pie', 8, 'food/meatpie.jpg')">
+        <img src="food/meatpie.jpeg" class="order-img">
+        <h4>Meat Pie</h4>
+        <p>$8</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Jollof Rice', 10, 'food/jollof.jpg')">
+        <img src="food/jollof.png" class="order-img">
+        <h4>Jollof Rice</h4>
+        <p>$10</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Fried Rice', 10, 'food/friedrice.jpg')">
+        <img src="food/friedrice.jpg" class="order-img">
+        <h4>Fried Rice</h4>
+        <p>$10</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Chicken Curry', 12, 'food/curry.jpg')">
+        <img src="food/curry.jpg" class="order-img">
+        <h4>Chicken Curry</h4>
+        <p>$12</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Fried Plantains', 6, 'food/plantains.jpg')">
+        <img src="food/plantains.jpeg" class="order-img">
+        <h4>Fried Plantains</h4>
+        <p>$6</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Donuts', 4, 'food/donuts.jpg')">
+        <img src="food/donuts.jpg" class="order-img">
+        <h4>Donuts</h4>
+        <p>$4</p>
+      </div>
+
+    </div>
+
+    <h2 style="margin-top:40px;">🥤 Drinks</h2>
+    <div class="order-grid">
+
+      <div class="order-card" onclick="addItem('Fresh Juice', 5, 'food/juice.jpg')">
+        <img src="food/juice.jpg" class="order-img">
+        <h4>Fresh Juice</h4>
+        <p>$5</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Smoothie Drink', 2, 'food/smoothie.jpg')">
+        <img src="food/smoothie.jpg" class="order-img">
+        <h4>Smoothie Drink</h4>
+        <p>$2</p>
+      </div>
+
+      <div class="order-card" onclick="addItem('Bottled Water', 2, 'food/water.jpg')">
+        <img src="food/water.jpg" class="order-img">
+        <h4>Bottled Water</h4>
+        <p>$2</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="order-cart">
+  <h2>Your Cart</h2>
+
+  <div id="cart-items"></div>
+
+  <p class="cart-total">Total: <span id="total">$0.00</span></p>
+
+  <h3>Payment</h3>
+  <form id="checkoutForm" onsubmit="submitOrder(event)">
+    <input type="text" placeholder="Full Name" required>
+    <input type="text" placeholder="Card Number" required>
+    <div class="checkout-row">
+      <input type="text" placeholder="MM/YY" required>
+      <input type="text" placeholder="CVV" required>
+    </div>
+    <button type="submit" class="checkout-btn">Pay & Place Order</button>
+  </form>
+
+  <p id="orderMessage" class="order-message"></p>
+</div>
+
+
+<script>
+let cart = [];
+
+function addItem(name, price, img) {
+  cart.push({ name, price, img });
+  renderCart();
+}
+
+function renderCart() {
+  const cartBox = document.getElementById('cart-items');
+  cartBox.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price;
+
+    cartBox.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.img}" class="cart-thumb">
+        <p>${item.name}</p>
+        <span>$${item.price}</span>
+      </div>
+    `;
+  });
+
+  document.getElementById('total').innerText = "$" + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>

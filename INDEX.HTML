@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wisdom’s Kitchen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Wisdom’s Kitchen</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="order.html">Order</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<div class="home-hero fade-in">
+  <img src="mom.jpg" class="home-img">
+  <h2>Fresh • Homemade • Authentic</h2>
+  <p>Bringing the taste of home to your table.</p>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+
+  <div class="slide">
+    <img src="food/jollof.png" class="slide-img">
+  </div>
+
+  <div class="slide">
+    <img src="food/meatpie.jpeg" class="slide-img">
+  </div>
+
+  <div class="slide">
+    <img src="food/plantains.jpeg" class="slide-img">
+  </div>
+
+</div>
+
+
+<!-- CONTACT SECTION -->
+<div class="home-contact fade-in">
+  <h3>📞 Contact Us</h3>
+
+  <p>📱 <strong>Phone:</strong> 704‑828‑2301</p>
+  <p>📧 <strong>Email:</strong> marieahmarie12@gmail.com</p>
+  <p>📍 <strong>Location:</strong> 260 Silver Oak Cir</p>
+  <p>📸 <strong>Instagram:</strong> @wisdomkitchen</p>
+</div>
+
+<div class="call-now-container">
+  <a href="tel:7048282301" class="call-now-btn">📞 Call Now</a>
+</div>
+
+<script>
+let slideIndex = 0;
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+
+  setTimeout(showSlides, 3000);
+}
+
+showSlides();
+</script>
+
+</body>
+</html>
